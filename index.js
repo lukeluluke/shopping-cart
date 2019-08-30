@@ -1,6 +1,7 @@
 "use strict"
 const program = require('./command')
 const fileHelper = require('./helper/fileHelper')
+const CartApp = require('./app/cart-app')
 const Promise = require('bluebird')
 
 if (program.debug) {
@@ -21,7 +22,8 @@ const promises = [
  */
 Promise.all(promises)
     .then(function (data) {
-        console.log(data);
+        const cartApp = new CartApp(data[0], data[1])
+        cartApp.total()
     })
     .catch(function (exception) {
         console.error(exception)
