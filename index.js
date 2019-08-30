@@ -1,15 +1,17 @@
 "use strict"
 const program = require('./command')
 const fileHelper = require('./helper/fileHelper')
+const logHelper = require('./helper/logHelper')
 const CartApp = require('./app/cart-app')
 const Promise = require('bluebird')
 
 if (program.debug) {
-    console.log('Debug is enabled')
+    process.env.debug = true
 }
 
 if (!program.cart || !program.price) {
-    console.log('Files missing')
+    logHelper.error('Files missing')
+    return
 }
 
 const promises = [
@@ -22,11 +24,13 @@ const promises = [
  */
 Promise.all(promises)
     .then(function (data) {
+        logHelper.debug('Start calculate total price')
         const cartApp = new CartApp(data[0], data[1])
-        cartApp.total()
+        const total = cartApp.total()
+        logHelper.info(total + '\n')
     })
     .catch(function (exception) {
-        console.error(exception)
+        logHelper.error(exception.message)
     })
 
 

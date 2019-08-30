@@ -1,9 +1,10 @@
 const Product = require('../models/product.model')
 const ProductPrice = require('../models/product-price.model')
+const logHelper = require('../helper/logHelper')
 
 class CartApp {
     constructor(products, prices) {
-        console.log('Initialize models from json data')
+        logHelper.debug('Initialize models from json data')
         const $this = this
         this.products = []
         this.basePrices = []
@@ -24,7 +25,6 @@ class CartApp {
      * Get total price of products
      */
     total() {
-        console.log('Get total price')
         let total = 0
         const $this = this
         this.products.forEach(function (product) {
@@ -44,7 +44,7 @@ class CartApp {
             total += $this.calculateProductTotal(basePrice[0].basePrice, product.artistMarkup, product.quantity)
         })
 
-        console.log('Total price is ' + total)
+        return total
     }
 
 
