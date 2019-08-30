@@ -1,0 +1,13 @@
+{
+  "name": "shopping-cart",
+  "version": "1.0.0",
+  "description": "Calculate total price for items in shopping cart",
+  "main": "index.js",
+  "repository": "https://github.com/lukeluluke/shopping-cart.git",
+  "author": "lukeluluke <luke0427@hotmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "jest": "^24.9.0",
+    "lodash": "^4.17.15"
+  }
+}
