@@ -8,12 +8,14 @@ class FileHelper {
      */
     readFile(file) {
         const targetFile = './data/' + file
-        fs.readFile(targetFile, (err, data) => {
-            if (err) {
-                console.log(err)
-            } else {
-                console.log(JSON.parse(data))
-            }
+        return new Promise((resolve, reject) => {
+            fs.readFile(targetFile, (err, data) => {
+                if (err) {
+                    reject(err)
+                } else {
+                    resolve(JSON.parse(data))
+                }
+            })
         })
     }
 }

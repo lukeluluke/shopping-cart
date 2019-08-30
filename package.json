@@ -7,6 +7,7 @@
   "author": "lukeluluke <luke0427@hotmail.com>",
   "license": "MIT",
   "dependencies": {
+    "bluebird": "^3.5.5",
     "commander": "^3.0.1",
     "jest": "^24.9.0",
     "lodash": "^4.17.15"
